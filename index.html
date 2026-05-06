@@ -1,1 +1,1619 @@
+<!DOCTYPE html>
 
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#0B1120">
+<title>SPLE Pro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Modern medical/tech palette - deep navy with cyan accent */
+  --bg:#0B1120;
+  --bg-2:#0F172A;
+  --surface:#1E293B;
+  --surface-2:#334155;
+  --surface-3:#475569;
+  --border:#1E293B;
+  --border-2:#334155;
+  --text:#F8FAFC;
+  --text-2:#CBD5E1;
+  --text-3:#94A3B8;
+  --text-4:#64748B;
+
+/* Primary: vibrant cyan-teal */
+–primary:#06B6D4;
+–primary-h:#0891B2;
+–primary-light:rgba(6,182,212,0.15);
+–primary-soft:rgba(6,182,212,0.08);
+
+/* Status colors - vibrant but professional */
+–success:#10B981;
+–success-light:rgba(16,185,129,0.15);
+–warning:#F59E0B;
+–warning-light:rgba(245,158,11,0.15);
+–error:#EF4444;
+–error-light:rgba(239,68,68,0.15);
+
+/* Section accents (each section gets its own color) */
+–sec-pharm:#8B5CF6;
+–sec-clinical:#06B6D4;
+–sec-social:#F59E0B;
+–sec-bio:#10B981;
+
+–shadow-sm:0 1px 2px rgba(0,0,0,0.3);
+–shadow:0 4px 12px rgba(0,0,0,0.4);
+–shadow-lg:0 12px 32px rgba(0,0,0,0.5);
+
+–font:‘Readex Pro’, system-ui, -apple-system, sans-serif;
+–radius:14px;
+–radius-sm:10px;
+–radius-lg:18px;
+}
+
+[data-theme=“light”]{
+–bg:#F8FAFC;
+–bg-2:#F1F5F9;
+–surface:#FFFFFF;
+–surface-2:#F1F5F9;
+–surface-3:#E2E8F0;
+–border:#E2E8F0;
+–border-2:#CBD5E1;
+–text:#0F172A;
+–text-2:#334155;
+–text-3:#64748B;
+–text-4:#94A3B8;
+–primary-light:rgba(6,182,212,0.10);
+–primary-soft:rgba(6,182,212,0.05);
+–shadow-sm:0 1px 2px rgba(15,23,42,0.06);
+–shadow:0 4px 12px rgba(15,23,42,0.08);
+–shadow-lg:0 12px 32px rgba(15,23,42,0.12);
+}
+
+*{box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent}
+html{-webkit-font-smoothing:antialiased; -webkit-text-size-adjust:100%}
+body{
+font-family:var(–font);
+background:var(–bg);
+color:var(–text);
+line-height:1.5;
+min-height:100vh;
+font-size:15px;
+font-weight:400;
+}
+button{font-family:inherit; cursor:pointer; border:none; background:none; color:inherit; font-size:inherit}
+
+/* ========== HEADER ========== */
+.header{
+position:sticky; top:0; z-index:50;
+background:var(–bg);
+border-bottom:1px solid var(–border);
+padding:14px 18px;
+display:flex; justify-content:space-between; align-items:center;
+}
+.brand{
+display:flex; align-items:center; gap:10px;
+}
+.brand-logo{
+width:36px; height:36px;
+border-radius:10px;
+background:linear-gradient(135deg, var(–primary) 0%, #0EA5E9 100%);
+display:grid; place-items:center;
+color:white;
+box-shadow:0 4px 12px rgba(6,182,212,0.4);
+}
+.brand-name{
+font-size:18px;
+font-weight:700;
+letter-spacing:-0.02em;
+}
+.brand-name span{color:var(–primary)}
+.icon-btn{
+width:38px; height:38px;
+border-radius:10px;
+background:var(–surface);
+display:grid; place-items:center;
+color:var(–text-2);
+transition:all 0.15s;
+border:1px solid var(–border);
+}
+.icon-btn:hover{background:var(–surface-2); color:var(–text); border-color:var(–border-2)}
+.icon-btn:active{transform:scale(0.95)}
+
+.container{
+max-width:600px;
+margin:0 auto;
+padding:24px 18px 48px;
+}
+
+/* ========== INTRO ========== */
+.intro{margin-bottom:28px}
+.intro h1{
+font-size:30px;
+font-weight:700;
+letter-spacing:-0.025em;
+margin-bottom:6px;
+}
+.intro p{
+color:var(–text-3);
+font-size:15px;
+}
+
+/* ========== STATS ========== */
+.stats{
+display:grid;
+grid-template-columns:repeat(3, 1fr);
+gap:10px;
+margin-bottom:32px;
+}
+.stat{
+background:var(–surface);
+border:1px solid var(–border);
+border-radius:var(–radius);
+padding:16px 12px;
+text-align:center;
+position:relative;
+overflow:hidden;
+}
+.stat-icon{
+width:32px; height:32px;
+margin:0 auto 8px;
+border-radius:8px;
+display:grid; place-items:center;
+}
+.stat:nth-child(1) .stat-icon{background:rgba(6,182,212,0.15); color:var(–primary)}
+.stat:nth-child(2) .stat-icon{background:rgba(139,92,246,0.15); color:#8B5CF6}
+.stat:nth-child(3) .stat-icon{background:rgba(16,185,129,0.15); color:var(–success)}
+.stat-num{
+font-size:22px;
+font-weight:700;
+letter-spacing:-0.02em;
+line-height:1;
+margin-bottom:3px;
+}
+.stat-label{
+font-size:12px;
+color:var(–text-3);
+font-weight:500;
+}
+
+/* ========== SECTION TITLE ========== */
+.section-title{
+display:flex; align-items:center; justify-content:space-between;
+margin-bottom:14px;
+padding:0 4px;
+}
+.section-title h2{
+font-size:17px;
+font-weight:600;
+letter-spacing:-0.01em;
+}
+.section-title-meta{
+font-size:13px;
+color:var(–text-3);
+font-weight:500;
+}
+
+/* ========== EXAM LIST ========== */
+.exam-list{
+display:flex; flex-direction:column;
+gap:10px;
+}
+.exam-card{
+background:var(–surface);
+border:1px solid var(–border);
+border-radius:var(–radius);
+padding:16px;
+cursor:pointer;
+transition:all 0.2s;
+text-align:right;
+width:100%;
+display:flex; align-items:center; gap:14px;
+position:relative;
+}
+.exam-card:hover{
+border-color:var(–primary);
+background:var(–surface);
+transform:translateY(-1px);
+box-shadow:var(–shadow);
+}
+.exam-card:active{transform:translateY(0)}
+.exam-card.completed-pass{border-color:rgba(16,185,129,0.3)}
+.exam-card.completed-fail{border-color:rgba(239,68,68,0.3)}
+.exam-card.in-progress{border-color:rgba(245,158,11,0.3)}
+
+.exam-num{
+width:48px; height:48px;
+border-radius:12px;
+background:linear-gradient(135deg, var(–surface-2) 0%, var(–surface-3) 100%);
+display:grid; place-items:center;
+font-size:18px; font-weight:700;
+flex-shrink:0;
+color:var(–text);
+letter-spacing:-0.02em;
+}
+.exam-card.completed-pass .exam-num{
+background:linear-gradient(135deg, var(–success) 0%, #059669 100%);
+color:white;
+box-shadow:0 4px 12px rgba(16,185,129,0.3);
+}
+.exam-card.completed-fail .exam-num{
+background:linear-gradient(135deg, var(–error) 0%, #DC2626 100%);
+color:white;
+box-shadow:0 4px 12px rgba(239,68,68,0.3);
+}
+.exam-card.in-progress .exam-num{
+background:linear-gradient(135deg, var(–warning) 0%, #D97706 100%);
+color:white;
+box-shadow:0 4px 12px rgba(245,158,11,0.3);
+}
+
+.exam-info{flex:1; min-width:0}
+.exam-name{
+font-size:16px;
+font-weight:600;
+margin-bottom:3px;
+letter-spacing:-0.01em;
+}
+.exam-meta{
+display:flex; align-items:center; gap:10px;
+font-size:13px;
+color:var(–text-3);
+font-weight:500;
+}
+.exam-meta-item{
+display:inline-flex; align-items:center; gap:4px;
+}
+
+.exam-progress{
+margin-top:10px;
+height:5px;
+background:var(–surface-2);
+border-radius:3px;
+overflow:hidden;
+}
+.exam-progress-fill{
+height:100%;
+background:linear-gradient(90deg, var(–warning), #F97316);
+border-radius:3px;
+transition:width 0.3s;
+}
+
+.exam-action{
+display:flex; flex-direction:column; align-items:flex-end; gap:6px;
+flex-shrink:0;
+}
+.exam-status{
+font-size:11px;
+font-weight:700;
+padding:4px 9px;
+border-radius:6px;
+letter-spacing:0;
+}
+.exam-status.pass{background:var(–success-light); color:var(–success)}
+.exam-status.fail{background:var(–error-light); color:var(–error)}
+.exam-status.progress{background:var(–warning-light); color:var(–warning)}
+.exam-score{
+font-size:18px;
+font-weight:700;
+letter-spacing:-0.02em;
+line-height:1;
+}
+.exam-score.pass{color:var(–success)}
+.exam-score.fail{color:var(–error)}
+.chevron{
+color:var(–text-4);
+flex-shrink:0;
+}
+
+/* ========== EXAM SCREEN ========== */
+.screen{display:none}
+.screen.active{display:block}
+.exam-screen{display:none; min-height:100vh; flex-direction:column}
+.exam-screen.active{display:flex}
+
+.exam-header{
+position:sticky; top:0; z-index:50;
+background:var(–bg);
+border-bottom:1px solid var(–border);
+padding:12px 14px;
+display:flex; align-items:center; gap:10px;
+}
+.timer{
+display:inline-flex; align-items:center; gap:6px;
+font-size:15px;
+font-weight:600;
+font-variant-numeric:tabular-nums;
+padding:8px 12px;
+background:var(–surface);
+border:1px solid var(–border);
+border-radius:10px;
+letter-spacing:0.02em;
+}
+.timer.warn{
+color:var(–warning);
+background:var(–warning-light);
+border-color:rgba(245,158,11,0.3);
+}
+.timer.danger{
+color:var(–error);
+background:var(–error-light);
+border-color:rgba(239,68,68,0.3);
+animation:pulse 1.2s infinite;
+}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.6}}
+
+.q-counter{
+flex:1;
+text-align:center;
+font-size:13px;
+color:var(–text-3);
+font-weight:500;
+}
+.q-counter strong{color:var(–text); font-weight:700; font-size:14px}
+
+.q-container{
+flex:1;
+padding:24px 18px 32px;
+max-width:680px;
+width:100%;
+margin:0 auto;
+}
+
+.q-section{
+display:inline-flex; align-items:center; gap:6px;
+font-size:11px;
+font-weight:700;
+padding:5px 10px;
+border-radius:6px;
+margin-bottom:16px;
+text-transform:uppercase;
+letter-spacing:0.05em;
+background:var(–primary-light);
+color:var(–primary);
+}
+.q-section[data-sec=“Pharmaceutical Sciences”]{background:rgba(139,92,246,0.15); color:#8B5CF6}
+.q-section[data-sec=“Clinical Sciences”]{background:rgba(6,182,212,0.15); color:var(–primary)}
+.q-section[data-sec=“Social/Behavioral/Administrative Sciences”]{background:rgba(245,158,11,0.15); color:var(–warning)}
+.q-section[data-sec=“Basic Biomedical Sciences”]{background:rgba(16,185,129,0.15); color:var(–success)}
+
+.q-text{
+font-size:18px;
+font-weight:500;
+line-height:1.55;
+margin-bottom:24px;
+direction:ltr;
+text-align:left;
+letter-spacing:-0.005em;
+}
+
+.options{display:flex; flex-direction:column; gap:10px; direction:ltr}
+.option{
+display:flex; align-items:center; gap:14px;
+background:var(–surface);
+border:2px solid var(–border);
+border-radius:var(–radius);
+padding:14px 16px;
+cursor:pointer;
+transition:all 0.15s;
+text-align:left;
+width:100%;
+}
+.option:hover{border-color:var(–border-2); background:var(–surface)}
+.option:active{transform:scale(0.99)}
+.option-letter{
+width:30px; height:30px;
+border-radius:8px;
+background:var(–surface-2);
+display:grid; place-items:center;
+font-size:13px; font-weight:700;
+flex-shrink:0;
+color:var(–text-2);
+transition:all 0.15s;
+}
+.option-text{
+flex:1;
+font-size:15px;
+font-weight:500;
+line-height:1.5;
+color:var(–text);
+}
+.option.selected{
+background:var(–primary-light);
+border-color:var(–primary);
+}
+.option.selected .option-letter{
+background:var(–primary);
+color:white;
+box-shadow:0 0 0 3px var(–primary-soft);
+}
+
+.q-actions{
+display:flex; gap:10px;
+padding-top:24px;
+margin-top:24px;
+border-top:1px solid var(–border);
+}
+.btn{
+display:inline-flex; align-items:center; justify-content:center; gap:8px;
+padding:13px 18px;
+background:var(–surface);
+border:1px solid var(–border);
+border-radius:var(–radius-sm);
+font-weight:600;
+font-size:14px;
+color:var(–text);
+transition:all 0.15s;
+min-height:46px;
+}
+.btn:hover:not(:disabled){background:var(–surface-2); border-color:var(–border-2)}
+.btn:active:not(:disabled){transform:scale(0.97)}
+.btn:disabled{opacity:0.4; cursor:not-allowed}
+.btn-primary{
+background:linear-gradient(135deg, var(–primary) 0%, #0EA5E9 100%);
+color:white;
+border-color:transparent;
+box-shadow:0 4px 12px rgba(6,182,212,0.3);
+}
+.btn-primary:hover:not(:disabled){
+background:linear-gradient(135deg, var(–primary-h) 0%, #0284C7 100%);
+box-shadow:0 6px 16px rgba(6,182,212,0.4);
+}
+.btn-flag{flex-shrink:0; width:46px; padding:13px 0}
+.btn-flag.active{
+background:var(–warning);
+color:#0a0a0a;
+border-color:transparent;
+box-shadow:0 4px 12px rgba(245,158,11,0.3);
+}
+.btn-prev{flex:1}
+.btn-next{flex:2}
+.btn-danger{background:var(–error-light); color:var(–error); border-color:rgba(239,68,68,0.2)}
+.btn-danger:hover:not(:disabled){background:var(–error); color:white; border-color:var(–error)}
+
+/* ========== NAVIGATOR ========== */
+.nav-overlay{
+position:fixed; inset:0;
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(4px);
+-webkit-backdrop-filter:blur(4px);
+z-index:90;
+opacity:0; pointer-events:none;
+transition:opacity 0.2s;
+}
+.nav-overlay.open{opacity:1; pointer-events:auto}
+.navigator{
+position:fixed; bottom:-100%; left:0; right:0;
+background:var(–bg);
+border-top:1px solid var(–border);
+border-radius:24px 24px 0 0;
+z-index:100;
+max-height:85vh;
+display:flex; flex-direction:column;
+transition:bottom 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+box-shadow:0 -10px 40px rgba(0,0,0,0.3);
+}
+.navigator.open{bottom:0}
+.nav-handle{
+width:40px; height:5px;
+background:var(–border-2);
+border-radius:3px;
+margin:10px auto 0;
+}
+.nav-header{
+padding:14px 20px;
+display:flex; justify-content:space-between; align-items:center;
+border-bottom:1px solid var(–border);
+}
+.nav-header h3{font-size:18px; font-weight:700}
+.nav-body{flex:1; overflow-y:auto; padding:18px 18px 8px}
+.nav-legend{
+display:flex; gap:14px; flex-wrap:wrap;
+margin-bottom:18px;
+font-size:12px;
+color:var(–text-3);
+font-weight:500;
+}
+.legend-item{display:flex; align-items:center; gap:6px}
+.legend-dot{
+width:14px; height:14px;
+border-radius:5px;
+background:var(–surface-2);
+}
+.legend-dot.answered{background:var(–primary)}
+.legend-dot.flagged{background:var(–warning)}
+.nav-grid{
+display:grid;
+grid-template-columns:repeat(8, 1fr);
+gap:6px;
+}
+@media(max-width:380px){.nav-grid{grid-template-columns:repeat(6, 1fr)}}
+.nav-cell{
+aspect-ratio:1;
+border-radius:8px;
+background:var(–surface);
+border:1.5px solid var(–border);
+display:grid; place-items:center;
+font-size:13px; font-weight:600;
+color:var(–text-3);
+cursor:pointer;
+transition:all 0.1s;
+}
+.nav-cell:hover{background:var(–surface-2); border-color:var(–border-2); color:var(–text)}
+.nav-cell.answered{
+background:var(–primary);
+color:white;
+border-color:var(–primary);
+box-shadow:0 2px 6px rgba(6,182,212,0.3);
+}
+.nav-cell.flagged{
+background:var(–warning);
+color:#0a0a0a;
+border-color:var(–warning);
+box-shadow:0 2px 6px rgba(245,158,11,0.3);
+}
+.nav-cell.flagged.answered{
+background:linear-gradient(135deg, var(–warning) 50%, var(–primary) 50%);
+color:white;
+}
+.nav-cell.current{outline:2.5px solid var(–text); outline-offset:2px}
+.nav-cell.locked{opacity:0.3; cursor:not-allowed}
+
+.nav-footer{
+padding:14px 18px 24px;
+border-top:1px solid var(–border);
+display:flex; flex-direction:column; gap:8px;
+}
+
+/* ========== BREAK ========== */
+.break-screen{
+position:fixed; inset:0; z-index:200;
+background:var(–bg);
+display:none; flex-direction:column;
+align-items:center; justify-content:center;
+padding:24px; text-align:center;
+}
+.break-screen.active{display:flex}
+.break-icon{
+width:80px; height:80px;
+border-radius:24px;
+background:linear-gradient(135deg, var(–primary) 0%, #0EA5E9 100%);
+display:grid; place-items:center;
+margin-bottom:24px;
+box-shadow:0 12px 32px rgba(6,182,212,0.4);
+color:white;
+}
+.break-screen h2{
+font-size:26px;
+font-weight:700;
+letter-spacing:-0.02em;
+margin-bottom:8px;
+}
+.break-screen p{
+color:var(–text-3);
+font-size:15px;
+max-width:340px;
+margin-bottom:32px;
+}
+.break-timer{
+font-size:64px;
+font-weight:700;
+color:var(–primary);
+font-variant-numeric:tabular-nums;
+letter-spacing:-0.04em;
+margin-bottom:32px;
+line-height:1;
+}
+
+/* ========== RESULTS ========== */
+.results-screen{display:none; min-height:100vh}
+.results-screen.active{display:block}
+
+.result-hero{
+padding:32px 24px;
+text-align:center;
+}
+.result-icon{
+width:72px; height:72px;
+border-radius:20px;
+display:grid; place-items:center;
+margin:0 auto 18px;
+color:white;
+}
+.result-icon.pass{
+background:linear-gradient(135deg, var(–success) 0%, #059669 100%);
+box-shadow:0 12px 32px rgba(16,185,129,0.4);
+}
+.result-icon.fail{
+background:linear-gradient(135deg, var(–error) 0%, #DC2626 100%);
+box-shadow:0 12px 32px rgba(239,68,68,0.4);
+}
+.result-label{
+font-size:13px;
+color:var(–text-3);
+font-weight:600;
+margin-bottom:6px;
+text-transform:uppercase;
+letter-spacing:0.05em;
+}
+.score-num{
+font-size:88px;
+font-weight:700;
+letter-spacing:-0.04em;
+font-variant-numeric:tabular-nums;
+line-height:1;
+margin-bottom:6px;
+}
+.score-num.pass{color:var(–success)}
+.score-num.fail{color:var(–error)}
+.score-of{
+color:var(–text-3);
+font-size:14px;
+margin-bottom:20px;
+}
+.result-status{
+display:inline-flex; align-items:center; gap:6px;
+padding:8px 16px;
+border-radius:100px;
+font-weight:700;
+font-size:14px;
+}
+.result-status.pass{background:var(–success-light); color:var(–success)}
+.result-status.fail{background:var(–error-light); color:var(–error)}
+
+.result-stats{
+display:grid;
+grid-template-columns:repeat(2, 1fr);
+gap:10px;
+margin:24px 0;
+}
+.result-stat{
+background:var(–surface);
+border:1px solid var(–border);
+border-radius:var(–radius);
+padding:18px;
+text-align:center;
+}
+.result-stat-icon{
+width:36px; height:36px;
+border-radius:10px;
+margin:0 auto 8px;
+display:grid; place-items:center;
+}
+.result-stat-icon.success{background:var(–success-light); color:var(–success)}
+.result-stat-icon.error{background:var(–error-light); color:var(–error)}
+.result-stat-num{
+font-size:30px;
+font-weight:700;
+letter-spacing:-0.02em;
+margin-bottom:2px;
+line-height:1;
+}
+.result-stat-num.success{color:var(–success)}
+.result-stat-num.error{color:var(–error)}
+.result-stat-label{
+font-size:13px;
+color:var(–text-3);
+font-weight:500;
+}
+
+.section-perf{
+background:var(–surface);
+border:1px solid var(–border);
+border-radius:var(–radius);
+padding:20px;
+margin-bottom:18px;
+}
+.section-perf h3{
+font-size:16px;
+font-weight:700;
+margin-bottom:18px;
+letter-spacing:-0.01em;
+}
+.section-row{margin-bottom:16px}
+.section-row:last-child{margin-bottom:0}
+.section-row-top{
+display:flex; justify-content:space-between; align-items:baseline;
+margin-bottom:6px;
+font-size:14px;
+gap:8px;
+}
+.section-row-name{
+font-weight:500;
+display:flex; align-items:center; gap:8px;
+}
+.section-color-dot{
+width:8px; height:8px;
+border-radius:3px;
+flex-shrink:0;
+}
+.section-row-pct{
+font-weight:700;
+color:var(–text);
+font-variant-numeric:tabular-nums;
+}
+.section-bar{
+height:8px;
+background:var(–surface-2);
+border-radius:4px;
+overflow:hidden;
+}
+.section-bar-fill{
+height:100%;
+border-radius:4px;
+transition:width 1s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.result-actions{display:flex; gap:10px; margin-top:8px}
+.result-actions .btn{flex:1}
+
+/* ========== REVIEW ========== */
+.review-screen{display:none}
+.review-screen.active{display:block}
+.review-tabs{
+display:flex;
+background:var(–surface);
+border:1px solid var(–border);
+border-radius:var(–radius);
+padding:4px;
+margin-bottom:18px;
+}
+.review-tab{
+flex:1;
+padding:10px;
+font-size:13px;
+font-weight:600;
+color:var(–text-3);
+border-radius:10px;
+transition:all 0.15s;
+}
+.review-tab.active{
+background:var(–primary);
+color:white;
+box-shadow:0 2px 8px rgba(6,182,212,0.3);
+}
+
+.review-q{
+background:var(–surface);
+border:1px solid var(–border);
+border-radius:var(–radius);
+padding:18px;
+margin-bottom:12px;
+}
+.review-q-meta{
+display:flex; justify-content:space-between; align-items:center;
+margin-bottom:14px;
+font-size:12px;
+color:var(–text-3);
+font-weight:500;
+}
+.review-q-num{
+font-weight:700;
+color:var(–text);
+background:var(–surface-2);
+padding:3px 10px;
+border-radius:6px;
+font-size:13px;
+}
+.review-status{
+display:inline-flex; align-items:center; gap:4px;
+font-weight:600;
+padding:3px 8px;
+border-radius:6px;
+}
+.review-status.correct{background:var(–success-light); color:var(–success)}
+.review-status.incorrect{background:var(–error-light); color:var(–error)}
+.review-q-text{
+font-size:15px;
+font-weight:500;
+line-height:1.55;
+margin-bottom:14px;
+direction:ltr;
+text-align:left;
+}
+.review-options{display:flex; flex-direction:column; gap:6px; direction:ltr; margin-bottom:14px}
+.review-opt{
+padding:10px 12px;
+border-radius:8px;
+background:var(–surface-2);
+font-size:14px;
+display:flex; gap:10px; align-items:flex-start;
+border:1.5px solid transparent;
+font-weight:500;
+}
+.review-opt-letter{font-weight:700; flex-shrink:0; min-width:18px}
+.review-opt.correct{
+background:var(–success-light);
+border-color:var(–success);
+color:var(–text);
+}
+.review-opt.user-incorrect{
+background:var(–error-light);
+border-color:var(–error);
+}
+.review-explanation{
+background:var(–primary-soft);
+border-right:3px solid var(–primary);
+border-radius:8px;
+padding:14px;
+font-size:14px;
+line-height:1.6;
+color:var(–text-2);
+}
+.review-explanation strong{
+display:block;
+color:var(–primary);
+font-size:11px;
+margin-bottom:6px;
+text-transform:uppercase;
+letter-spacing:0.05em;
+font-weight:700;
+}
+
+/* ========== MODAL ========== */
+.modal-overlay{
+position:fixed; inset:0;
+background:rgba(0,0,0,0.7);
+backdrop-filter:blur(4px);
+-webkit-backdrop-filter:blur(4px);
+z-index:300;
+display:none;
+align-items:flex-end; justify-content:center;
+}
+.modal-overlay.active{display:flex}
+.modal{
+background:var(–bg);
+border-radius:24px 24px 0 0;
+border-top:1px solid var(–border);
+padding:24px 20px 32px;
+width:100%; max-width:480px;
+box-shadow:0 -10px 40px rgba(0,0,0,0.3);
+}
+.modal-icon{
+width:48px; height:48px;
+border-radius:14px;
+background:var(–warning-light);
+color:var(–warning);
+display:grid; place-items:center;
+margin-bottom:14px;
+}
+.modal h3{
+font-size:19px;
+font-weight:700;
+margin-bottom:8px;
+letter-spacing:-0.01em;
+}
+.modal p{
+color:var(–text-3);
+font-size:14px;
+margin-bottom:20px;
+line-height:1.6;
+}
+.modal-actions{display:flex; gap:10px}
+.modal-actions .btn{flex:1}
+
+@media(min-width:600px){
+.modal-overlay{align-items:center; padding:20px}
+.modal{border-radius:18px; border:1px solid var(–border)}
+}
+
+.empty{
+text-align:center;
+padding:60px 20px;
+color:var(–text-3);
+font-size:15px;
+}
+
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(–border-2); border-radius:3px}
+::selection{background:var(–primary); color:white}
+</style>
+
+</head>
+<body data-theme="dark">
+
+<!-- HOME -->
+
+<div class="screen active" id="home-screen">
+  <header class="header">
+    <div class="brand">
+      <div class="brand-logo">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+        </svg>
+      </div>
+      <div class="brand-name">SPLE<span> Pro</span></div>
+    </div>
+    <button class="icon-btn" id="theme-toggle" aria-label="Theme">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </header>
+
+  <div class="container">
+    <div class="intro">
+      <h1>الامتحانات</h1>
+      <p>اختر امتحانًا للبدء</p>
+    </div>
+
+```
+<div class="stats">
+  <div class="stat">
+    <div class="stat-icon">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>
+    </div>
+    <div class="stat-num" id="stat-total">—</div>
+    <div class="stat-label">سؤال</div>
+  </div>
+  <div class="stat">
+    <div class="stat-icon">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+    </div>
+    <div class="stat-num">6</div>
+    <div class="stat-label">امتحان</div>
+  </div>
+  <div class="stat">
+    <div class="stat-icon">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+    </div>
+    <div class="stat-num">536</div>
+    <div class="stat-label">للنجاح</div>
+  </div>
+</div>
+
+<div class="section-title">
+  <h2>قائمة الامتحانات</h2>
+  <span class="section-title-meta">٦ امتحانات</span>
+</div>
+
+<div class="exam-list" id="exam-list"></div>
+```
+
+  </div>
+</div>
+
+<!-- EXAM -->
+
+<div class="exam-screen" id="exam-screen">
+  <header class="exam-header">
+    <div class="timer" id="timer">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      <span id="timer-text">02:00:00</span>
+    </div>
+    <div class="q-counter">
+      <strong id="q-current">1</strong> / 200 · <span id="part-num">الجزء الأول</span>
+    </div>
+    <button class="icon-btn" id="open-nav" aria-label="القائمة">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </header>
+
+  <div class="q-container">
+    <div class="q-section" id="q-section" data-sec="">Pharmaceutical Sciences</div>
+    <div class="q-text" id="q-text"></div>
+    <div class="options" id="q-options"></div>
+
+```
+<div class="q-actions">
+  <button class="btn btn-flag" id="flag-btn" aria-label="تمييز">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+  </button>
+  <button class="btn btn-prev" id="prev-btn">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    السابق
+  </button>
+  <button class="btn btn-primary btn-next" id="next-btn">
+    التالي
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+</div>
+```
+
+  </div>
+</div>
+
+<!-- NAVIGATOR -->
+
+<div class="nav-overlay" id="nav-overlay"></div>
+<div class="navigator" id="navigator">
+  <div class="nav-handle"></div>
+  <div class="nav-header">
+    <h3>قائمة الأسئلة</h3>
+    <button class="icon-btn" id="close-nav" aria-label="إغلاق">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="nav-body">
+    <div class="nav-legend">
+      <div class="legend-item"><span class="legend-dot answered"></span>مُجاب</div>
+      <div class="legend-item"><span class="legend-dot flagged"></span>مُميّز</div>
+      <div class="legend-item"><span class="legend-dot"></span>فارغ</div>
+    </div>
+    <div class="nav-grid" id="nav-grid"></div>
+  </div>
+  <div class="nav-footer">
+    <button class="btn btn-primary" id="finish-btn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      إنهاء وعرض النتيجة
+    </button>
+    <button class="btn btn-danger" id="exit-btn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+      حفظ والخروج
+    </button>
+  </div>
+</div>
+
+<!-- BREAK -->
+
+<div class="break-screen" id="break-screen">
+  <div class="break-icon">
+    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+      <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4Z"/>
+      <line x1="6" y1="1" x2="6" y2="4"/>
+      <line x1="10" y1="1" x2="10" y2="4"/>
+      <line x1="14" y1="1" x2="14" y2="4"/>
+    </svg>
+  </div>
+  <h2>انتهى الجزء الأول</h2>
+  <p>استرح ٣٠ دقيقة. الجزء الثاني يبدأ تلقائيًا أو متى أردت.</p>
+  <div class="break-timer" id="break-timer">30:00</div>
+  <button class="btn btn-primary" id="resume-btn" style="padding:14px 32px">متابعة الجزء الثاني</button>
+</div>
+
+<!-- RESULTS -->
+
+<div class="results-screen" id="results-screen">
+  <header class="header">
+    <div class="brand"><div class="brand-name">النتيجة</div></div>
+    <button class="icon-btn" id="back-home-btn" aria-label="الرئيسية">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/></svg>
+    </button>
+  </header>
+
+  <div class="container">
+    <div class="result-hero">
+      <div class="result-icon" id="result-icon">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" id="result-svg"></svg>
+      </div>
+      <div class="result-label">الدرجة النهائية</div>
+      <div class="score-num" id="score-display">0</div>
+      <div class="score-of">من ٨٠٠</div>
+      <div class="result-status" id="score-status">—</div>
+    </div>
+
+```
+<div class="result-stats">
+  <div class="result-stat">
+    <div class="result-stat-icon success">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <div class="result-stat-num success" id="correct-count">0</div>
+    <div class="result-stat-label">إجابة صحيحة</div>
+  </div>
+  <div class="result-stat">
+    <div class="result-stat-icon error">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </div>
+    <div class="result-stat-num error" id="incorrect-count">0</div>
+    <div class="result-stat-label">إجابة خاطئة</div>
+  </div>
+</div>
+
+<div class="section-perf">
+  <h3>الأداء حسب القسم</h3>
+  <div id="section-bars"></div>
+</div>
+
+<div class="result-actions">
+  <button class="btn btn-primary" id="review-btn">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+    مراجعة الأسئلة
+  </button>
+  <button class="btn" id="retake-btn">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+    إعادة
+  </button>
+</div>
+```
+
+  </div>
+</div>
+
+<!-- REVIEW -->
+
+<div class="review-screen" id="review-screen">
+  <header class="header">
+    <div class="brand"><div class="brand-name">المراجعة</div></div>
+    <button class="icon-btn" id="back-results-btn" aria-label="رجوع">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/></svg>
+    </button>
+  </header>
+  <div class="container">
+    <div class="review-tabs">
+      <button class="review-tab active" data-filter="all">الكل</button>
+      <button class="review-tab" data-filter="incorrect">الخاطئة</button>
+      <button class="review-tab" data-filter="flagged">المُميّزة</button>
+    </div>
+    <div id="review-list"></div>
+  </div>
+</div>
+
+<!-- MODAL -->
+
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <div class="modal-icon">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    </div>
+    <h3 id="modal-title">تأكيد</h3>
+    <p id="modal-message">هل أنت متأكد؟</p>
+    <div class="modal-actions">
+      <button class="btn" id="modal-cancel">إلغاء</button>
+      <button class="btn btn-primary" id="modal-ok">تأكيد</button>
+    </div>
+  </div>
+</div>
+
+<script src="spleData.js"></script>
+
+<script>
+'use strict';
+
+const STATE={
+  currentExam:null, currentExamId:null, currentQ:0, answers:{}, flags:{},
+  startTime:null, timerSec:7200, timerInterval:null,
+  inBreak:false, breakSec:1800, breakInterval:null, partTime:7200,
+  reviewFilter:'all', confirmCallback:null, currentResult:null
+};
+const STORAGE='sple_pro_v4';
+
+const SECTION_AR={
+  'Pharmaceutical Sciences':'العلوم الصيدلانية',
+  'Clinical Sciences':'العلوم السريرية',
+  'Social/Behavioral/Administrative Sciences':'العلوم الاجتماعية والإدارية',
+  'Basic Biomedical Sciences':'العلوم الطبية الحيوية'
+};
+const SECTION_COLORS={
+  'Pharmaceutical Sciences':'#8B5CF6',
+  'Clinical Sciences':'#06B6D4',
+  'Social/Behavioral/Administrative Sciences':'#F59E0B',
+  'Basic Biomedical Sciences':'#10B981'
+};
+
+const $=s=>document.querySelector(s);
+const $$=s=>document.querySelectorAll(s);
+
+function loadState(){try{const s=localStorage.getItem(STORAGE); return s?JSON.parse(s):{exams:{},results:{}};}catch(e){return {exams:{},results:{}};}}
+function saveState(d){try{localStorage.setItem(STORAGE,JSON.stringify(d));}catch(e){}}
+function saveProgress(){
+  const all=loadState();
+  if(!all.exams) all.exams={};
+  all.exams[STATE.currentExamId]={
+    inProgress:true,currentQ:STATE.currentQ,answers:STATE.answers,flags:STATE.flags,
+    timerSec:STATE.timerSec,partTime:STATE.partTime,inBreak:STATE.inBreak,breakSec:STATE.breakSec,
+    startedAt:STATE.startTime
+  };
+  saveState(all);
+}
+function clearProgress(id){const a=loadState(); if(a.exams && a.exams[id]) delete a.exams[id]; saveState(a);}
+function saveResult(id,r){
+  const a=loadState();
+  if(!a.results) a.results={};
+  a.results[id]=r;
+  if(a.exams && a.exams[id]) delete a.exams[id];
+  saveState(a);
+}
+
+function show(id){
+  $$('.screen, .exam-screen, .results-screen, .review-screen').forEach(el=>el.classList.remove('active'));
+  $('#'+id).classList.add('active');
+  window.scrollTo(0,0);
+}
+function showModal(t,m,cb){
+  $('#modal-title').textContent=t;
+  $('#modal-message').textContent=m;
+  $('#modal').classList.add('active');
+  STATE.confirmCallback=cb;
+}
+$('#modal-cancel').addEventListener('click',()=>{$('#modal').classList.remove('active'); STATE.confirmCallback=null;});
+$('#modal-ok').addEventListener('click',()=>{
+  $('#modal').classList.remove('active');
+  if(STATE.confirmCallback){STATE.confirmCallback(); STATE.confirmCallback=null;}
+});
+
+$('#theme-toggle').addEventListener('click',()=>{
+  const c=document.body.getAttribute('data-theme');
+  const n=c==='dark'?'light':'dark';
+  document.body.setAttribute('data-theme',n);
+  localStorage.setItem('sple_theme',n);
+});
+const savedTheme=localStorage.getItem('sple_theme');
+if(savedTheme) document.body.setAttribute('data-theme',savedTheme);
+
+function renderHome(){
+  $('#stat-total').textContent=SPLE_DATA.meta.total_questions.toLocaleString('ar-SA');
+  const list=$('#exam-list'); list.innerHTML='';
+  const all=loadState();
+  
+  SPLE_DATA.exams.forEach(exam=>{
+    const result=all.results && all.results[exam.id];
+    const inProgress=all.exams && all.exams[exam.id];
+    
+    let actionHTML='';
+    let progressHTML='';
+    let cardClass='exam-card';
+    
+    if(result){
+      const passed=result.scaledScore>=536;
+      cardClass+=passed?' completed-pass':' completed-fail';
+      actionHTML=`
+        <div class="exam-action">
+          <div class="exam-score ${passed?'pass':'fail'}">${result.scaledScore}</div>
+          <span class="exam-status ${passed?'pass':'fail'}">${passed?'ناجح':'راسب'}</span>
+        </div>`;
+    } else if(inProgress){
+      cardClass+=' in-progress';
+      const answered=Object.keys(inProgress.answers||{}).length;
+      const pct=Math.round((answered/200)*100);
+      actionHTML=`<div class="exam-action"><span class="exam-status progress">${pct}%</span></div>`;
+      progressHTML=`<div class="exam-progress"><div class="exam-progress-fill" style="width:${pct}%"></div></div>`;
+    } else {
+      actionHTML=`<svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>`;
+    }
+    
+    const btn=document.createElement('button');
+    btn.className=cardClass;
+    btn.innerHTML=`
+      <div class="exam-num">${exam.id}</div>
+      <div class="exam-info">
+        <div class="exam-name">امتحان ${exam.id}</div>
+        <div class="exam-meta">
+          <span class="exam-meta-item">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            ٢٠٠ سؤال
+          </span>
+          <span class="exam-meta-item">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            ٢٤٠ دقيقة
+          </span>
+        </div>
+        ${progressHTML}
+      </div>
+      ${actionHTML}
+    `;
+    btn.addEventListener('click',()=>startOrResumeExam(exam.id));
+    list.appendChild(btn);
+  });
+}
+
+function startOrResumeExam(id){
+  const all=loadState();
+  const result=all.results && all.results[id];
+  const inProgress=all.exams && all.exams[id];
+  if(result){
+    showModal('إعادة الامتحان','ستُستبدل النتيجة السابقة. هل تريد المتابعة؟',()=>{
+      const a=loadState();
+      if(a.results && a.results[id]) delete a.results[id];
+      if(a.exams && a.exams[id]) delete a.exams[id];
+      saveState(a);
+      startExam(id,true);
+    });
+    return;
+  }
+  if(inProgress){
+    showModal('استئناف الامتحان','هل تريد المتابعة من حيث توقفت؟',()=>startExam(id,false));
+    return;
+  }
+  startExam(id,true);
+}
+
+function startExam(id,fresh){
+  const exam=SPLE_DATA.exams.find(e=>e.id===id);
+  if(!exam) return;
+  STATE.currentExam=exam;
+  STATE.currentExamId=id;
+  if(fresh){
+    STATE.currentQ=0; STATE.answers={}; STATE.flags={};
+    STATE.timerSec=7200; STATE.partTime=7200;
+    STATE.inBreak=false; STATE.breakSec=1800;
+    STATE.startTime=Date.now();
+  } else {
+    const a=loadState(); const s=a.exams[id];
+    STATE.currentQ=s.currentQ||0;
+    STATE.answers=s.answers||{};
+    STATE.flags=s.flags||{};
+    STATE.timerSec=s.timerSec||7200;
+    STATE.partTime=s.partTime||7200;
+    STATE.inBreak=s.inBreak||false;
+    STATE.breakSec=s.breakSec||1800;
+    STATE.startTime=s.startedAt||Date.now();
+  }
+  show('exam-screen');
+  if(STATE.inBreak){showBreak(); return;}
+  startTimer(); renderQuestion();
+}
+
+function startTimer(){
+  if(STATE.timerInterval) clearInterval(STATE.timerInterval);
+  STATE.timerInterval=setInterval(()=>{
+    if(STATE.inBreak) return;
+    STATE.timerSec--;
+    updateTimer();
+    if(STATE.timerSec<=0){clearInterval(STATE.timerInterval); handlePartEnd();}
+    if(STATE.timerSec%30===0) saveProgress();
+  },1000);
+  updateTimer();
+}
+function updateTimer(){
+  const t=$('#timer');
+  const txt=$('#timer-text');
+  const h=Math.floor(STATE.timerSec/3600);
+  const m=Math.floor((STATE.timerSec%3600)/60);
+  const s=STATE.timerSec%60;
+  txt.textContent=`${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  t.classList.toggle('warn',STATE.timerSec<=600 && STATE.timerSec>120);
+  t.classList.toggle('danger',STATE.timerSec<=120);
+}
+function handlePartEnd(){
+  if(!STATE.inBreak && STATE.partTime===7200){showBreak();}
+  else {finishExam();}
+}
+function showBreak(){
+  STATE.inBreak=true;
+  $('#break-screen').classList.add('active');
+  if(STATE.breakInterval) clearInterval(STATE.breakInterval);
+  STATE.breakInterval=setInterval(()=>{
+    STATE.breakSec--;
+    const m=Math.floor(STATE.breakSec/60);
+    const s=STATE.breakSec%60;
+    $('#break-timer').textContent=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    if(STATE.breakSec<=0){clearInterval(STATE.breakInterval); resumeFromBreak();}
+    if(STATE.breakSec%5===0) saveProgress();
+  },1000);
+  saveProgress();
+}
+$('#resume-btn').addEventListener('click',resumeFromBreak);
+function resumeFromBreak(){
+  if(STATE.breakInterval) clearInterval(STATE.breakInterval);
+  STATE.inBreak=false;
+  STATE.timerSec=7200;
+  STATE.partTime=14400;
+  STATE.currentQ=Math.max(STATE.currentQ,100);
+  $('#break-screen').classList.remove('active');
+  startTimer(); renderQuestion();
+}
+
+function renderQuestion(){
+  if(STATE.currentQ===100 && STATE.partTime===7200){showBreak(); return;}
+  const q=STATE.currentExam.questions[STATE.currentQ];
+  $('#q-current').textContent=STATE.currentQ+1;
+  $('#part-num').textContent=STATE.currentQ<100?'الجزء الأول':'الجزء الثاني';
+  const sec=$('#q-section');
+  sec.textContent=SECTION_AR[q.section]||q.section;
+  sec.setAttribute('data-sec',q.section);
+  $('#q-text').textContent=q.question;
+  
+  const opts=$('#q-options'); opts.innerHTML='';
+  ['A','B','C','D'].forEach(letter=>{
+    const opt=document.createElement('button');
+    opt.className='option';
+    if(STATE.answers[STATE.currentQ]===letter) opt.classList.add('selected');
+    opt.innerHTML=`<div class="option-letter">${letter}</div><div class="option-text">${q.options[letter]}</div>`;
+    opt.addEventListener('click',()=>{
+      STATE.answers[STATE.currentQ]=letter;
+      saveProgress();
+      renderQuestion();
+    });
+    opts.appendChild(opt);
+  });
+  
+  $('#flag-btn').classList.toggle('active',STATE.flags[STATE.currentQ]);
+  $('#prev-btn').disabled=STATE.currentQ===0;
+  $('#next-btn').innerHTML=STATE.currentQ===199
+    ?`إنهاء <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`
+    :`التالي <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>`;
+}
+
+$('#prev-btn').addEventListener('click',()=>{
+  if(STATE.currentQ>0){STATE.currentQ--; renderQuestion(); saveProgress();}
+});
+$('#next-btn').addEventListener('click',()=>{
+  if(STATE.currentQ<199){
+    STATE.currentQ++;
+    if(STATE.currentQ===100 && !STATE.inBreak && STATE.partTime===7200){showBreak();}
+    else {renderQuestion(); saveProgress();}
+  } else {
+    showModal('إنهاء الامتحان','هل تريد إنهاء الامتحان واحتساب النتيجة؟',finishExam);
+  }
+});
+$('#flag-btn').addEventListener('click',()=>{
+  STATE.flags[STATE.currentQ]=!STATE.flags[STATE.currentQ];
+  saveProgress(); renderQuestion();
+});
+
+$('#open-nav').addEventListener('click',()=>{
+  renderNavigator();
+  $('#navigator').classList.add('open');
+  $('#nav-overlay').classList.add('open');
+});
+$('#close-nav').addEventListener('click',closeNav);
+$('#nav-overlay').addEventListener('click',closeNav);
+function closeNav(){
+  $('#navigator').classList.remove('open');
+  $('#nav-overlay').classList.remove('open');
+}
+function renderNavigator(){
+  const grid=$('#nav-grid'); grid.innerHTML='';
+  for(let i=0;i<200;i++){
+    const cell=document.createElement('button');
+    cell.className='nav-cell';
+    if(STATE.answers[i]!==undefined) cell.classList.add('answered');
+    if(STATE.flags[i]) cell.classList.add('flagged');
+    if(STATE.currentQ===i) cell.classList.add('current');
+    if(!STATE.inBreak && STATE.partTime===7200 && i>=100) cell.classList.add('locked');
+    if(STATE.partTime===14400 && i<100) cell.classList.add('locked');
+    cell.textContent=i+1;
+    cell.addEventListener('click',()=>{
+      if(cell.classList.contains('locked')) return;
+      STATE.currentQ=i; renderQuestion(); closeNav();
+    });
+    grid.appendChild(cell);
+  }
+}
+$('#finish-btn').addEventListener('click',()=>{
+  showModal('إنهاء الامتحان','لن تتمكن من العودة بعد ذلك.',()=>{
+    closeNav(); finishExam();
+  });
+});
+$('#exit-btn').addEventListener('click',()=>{
+  showModal('حفظ والخروج','سيتم حفظ تقدمك للمتابعة لاحقًا.',()=>{
+    if(STATE.timerInterval) clearInterval(STATE.timerInterval);
+    if(STATE.breakInterval) clearInterval(STATE.breakInterval);
+    saveProgress(); closeNav(); show('home-screen'); renderHome();
+  });
+});
+
+function finishExam(){
+  if(STATE.timerInterval) clearInterval(STATE.timerInterval);
+  if(STATE.breakInterval) clearInterval(STATE.breakInterval);
+  const exam=STATE.currentExam;
+  let correct=0;
+  const sectionStats={};
+  exam.questions.forEach((q,idx)=>{
+    if(!sectionStats[q.section]) sectionStats[q.section]={correct:0,total:0};
+    sectionStats[q.section].total++;
+    if(STATE.answers[idx]===q.correct){correct++; sectionStats[q.section].correct++;}
+  });
+  const scaledScore=Math.round(200+(correct/200)*600);
+  const passed=scaledScore>=536;
+  const result={
+    examId:STATE.currentExamId,correct,incorrect:200-correct,
+    scaledScore,percentage:(correct/200)*100,passed,
+    sectionStats,answers:STATE.answers,flags:STATE.flags,
+    completedAt:Date.now()
+  };
+  saveResult(STATE.currentExamId,result);
+  STATE.currentResult=result;
+  showResults(result);
+}
+
+function showResults(r){
+  show('results-screen');
+  $('#score-display').textContent=r.scaledScore;
+  $('#score-display').className='score-num '+(r.passed?'pass':'fail');
+  
+  const icon=$('#result-icon');
+  icon.className='result-icon '+(r.passed?'pass':'fail');
+  $('#result-svg').innerHTML=r.passed
+    ?'<polyline points="20 6 9 17 4 12"/>'
+    :'<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>';
+  
+  const status=$('#score-status');
+  status.innerHTML=r.passed
+    ?'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> ناجح'
+    :'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> لم تنجح';
+  status.className='result-status '+(r.passed?'pass':'fail');
+  $('#correct-count').textContent=r.correct;
+  $('#incorrect-count').textContent=r.incorrect;
+  
+  const bars=$('#section-bars'); bars.innerHTML='';
+  Object.entries(r.sectionStats).forEach(([sec,d])=>{
+    const pct=(d.correct/d.total)*100;
+    const color=SECTION_COLORS[sec]||'#06B6D4';
+    const div=document.createElement('div');
+    div.className='section-row';
+    div.innerHTML=`
+      <div class="section-row-top">
+        <span class="section-row-name">
+          <span class="section-color-dot" style="background:${color}"></span>
+          ${SECTION_AR[sec]||sec}
+        </span>
+        <span class="section-row-pct">${d.correct}/${d.total} · ${pct.toFixed(0)}%</span>
+      </div>
+      <div class="section-bar"><div class="section-bar-fill" style="width:0%; background:${color}"></div></div>
+    `;
+    bars.appendChild(div);
+    setTimeout(()=>{div.querySelector('.section-bar-fill').style.width=pct+'%';},100);
+  });
+}
+
+$('#back-home-btn').addEventListener('click',()=>{show('home-screen'); renderHome();});
+$('#review-btn').addEventListener('click',showReview);
+$('#retake-btn').addEventListener('click',()=>{
+  showModal('إعادة الامتحان','هل تريد إعادة هذا الامتحان من البداية؟',()=>{
+    clearProgress(STATE.currentExamId);
+    const a=loadState();
+    if(a.results) delete a.results[STATE.currentExamId];
+    saveState(a);
+    startExam(STATE.currentExamId,true);
+  });
+});
+
+function showReview(){
+  show('review-screen');
+  STATE.reviewFilter='all';
+  $$('.review-tab').forEach(t=>t.classList.toggle('active',t.dataset.filter==='all'));
+  renderReview();
+}
+$$('.review-tab').forEach(t=>t.addEventListener('click',()=>{
+  $$('.review-tab').forEach(x=>x.classList.remove('active'));
+  t.classList.add('active');
+  STATE.reviewFilter=t.dataset.filter;
+  renderReview();
+}));
+function renderReview(){
+  const list=$('#review-list'); list.innerHTML='';
+  const r=STATE.currentResult; const ex=STATE.currentExam;
+  let count=0;
+  ex.questions.forEach((q,idx)=>{
+    const userAns=r.answers[idx];
+    const isCorrect=userAns===q.correct;
+    if(STATE.reviewFilter==='incorrect' && isCorrect) return;
+    if(STATE.reviewFilter==='flagged' && !r.flags[idx]) return;
+    count++;
+    const card=document.createElement('div');
+    card.className='review-q';
+    let optsHTML='';
+    ['A','B','C','D'].forEach(letter=>{
+      let cls='review-opt';
+      if(letter===q.correct) cls+=' correct';
+      else if(letter===userAns && !isCorrect) cls+=' user-incorrect';
+      optsHTML+=`<div class="${cls}"><span class="review-opt-letter">${letter}.</span><span>${q.options[letter]}</span></div>`;
+    });
+    const statusIcon=isCorrect
+      ?'<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>'
+      :'<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
+    card.innerHTML=`
+      <div class="review-q-meta">
+        <span class="review-q-num">${idx+1}</span>
+        <span class="review-status ${isCorrect?'correct':'incorrect'}">${statusIcon} ${isCorrect?'صحيح':'خاطئ'}</span>
+      </div>
+      <div class="review-q-text">${q.question}</div>
+      <div class="review-options">${optsHTML}</div>
+      <div class="review-explanation">
+        <strong>الشرح</strong>
+        ${q.explanation || 'الإجابة الصحيحة: '+q.correct}
+      </div>
+    `;
+    list.appendChild(card);
+  });
+  if(count===0){list.innerHTML='<div class="empty">لا توجد أسئلة</div>';}
+}
+$('#back-results-btn').addEventListener('click',()=>show('results-screen'));
+
+renderHome();
+
+window.addEventListener('beforeunload',(e)=>{
+  if($('#exam-screen').classList.contains('active') && !STATE.inBreak){
+    saveProgress();
+    e.preventDefault(); e.returnValue='';
+  }
+});
+</script>
+
+</body>
+</html>
